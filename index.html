@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>礼品结果页</title>
+	<meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   <link rel="stylesheet" href="css/base.css">
+   <link rel="stylesheet" href="css/mycss.css">
+</head>
+<body>	
+		<!-- 浅蓝色背景 -->
+		<div class="bg"></div>
+		<!-- “恭喜你获得”背景 -->
+		<div class="pic"><img src="images/mid.png" alt=""></div>
+		</div>
+		<p class="pic-txt" >费雪积木</p>
+		<!-- form表单 -->
+		<form class="addr" action="a.php">
+    		<p class="add-txt">留下您的收货地址，惊喜好礼即可送到</p>
+    		<p class="add-sele">
+				<select name="" id="one">
+					<option value="0" class="pro">请选择</option>
+				</select>
+				<select name="" id="two">
+					<option value="0" class="cty">请选择</option>
+				</select>
+				<select name="" id="three">
+					<option value="0" class="are">请选择</option>
+				</select>
+			</p>
+			<p class="txt"><input type="text" class="adds" placeholder="地址..."></p>
+			<p class="name">
+				<input type="text" class="ur_name" placeholder="收货人">
+				<input type="tel" class="ur_tel" placeholder="联系电话">
+				<input type="text" class="ur_rek" placeholder="备注">
+			</p>
+			<p class="btn"><input type="image" name="submit" src="images/y.png" ></p>
+		</form>
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	// 安卓尺寸配置
+          size();
+          window.onresize=function(){
+            size();
+          };
+          function size(){
+            var html=document.getElementsByTagName('html')[0];
+            html.style.fontSize=10*(window.innerWidth/320)+"px";
+            if(window.innerWidth=="320px"){
+              window.innerWidth="320px";
+            }
+          }
+          // 城市联动
+    var $one=document.getElementById("one");
+	var $two=document.getElementById("two"); 
+	var $three=document.getElementById("three"); 
+	var onelist=["请选择","河北省","甘肃省","河南省"];
+	var twolist=[["请选择"],
+	["唐山","秦皇岛市","保定市"],
+	["兰州","酒泉市","金昌市"],
+	["郑州市","开封市","安阳市"]];
+	var threelist=[
+	[["请选择"]],
+	[["路南区","新区","开平区","玉田县"],["海港区","山海关","北戴河"],["新市区","唐县","高阳区"]],
+	[["城关区","七里河区","安宁区","红古区"],["肃州区","玉门市","敦煌市","瓜州市"],["金川区","水昌线"]],
+	[["中原区","二七区","金水区","新密区"],["龙亭区","金明区","兰考县"],["北关区","安阳县","龙安区","林州市"]]
+	]
+
+	
+	 
+	 function optionStr(_arr){
+	 	var str="";
+	 	for(var i=0;i<_arr.length;i++){
+	 		str=str+"<option value='"+i+"'>"+_arr[i]+"</option>";
+	 		// <option value='0'>所有省份</option>
+	 	}
+	 	return str;
+	 }
+	 $one.innerHTML=optionStr(onelist);
+	 $one.onchange=function(){
+	 	console.log(this.value);
+
+			$two.innerHTML=optionStr(twolist[this.value]);
+		 	$three.innerHTML=optionStr(threelist[this.value][0])
+	 	
+	 	
+	 }
+	 $two.onchange=function(){
+	 	$three.innerHTML=optionStr(threelist[$one.value][this.value])
+	 }
+          
+          // ajax 数据提交
+          $(".addr").on("submit",function(){
+          		var u_name=$(".ur_name").val(),
+          		    u_tel=$(".ur_tel").val(),
+          		    u_rek=$(".ur_rek").val(),
+          		    u_adds=$(".adds").val(),
+          		    u_pro=$(".pro").text(),
+          		    u_cty=$(".cty").text(),
+          		    u_are=$(".are").text();
+          		    
+       //    			// nam = /^[\u4e00-\u9fa5]{6}$/,//匹配汉字
+       //    			// tel = /^1[3578]\d{9}$/;//匹配手机号
+       //    			 // if(u_pro=="请选择"){
+       //    		  //   	alert("请选择省份");
+       //    		  //   	return false;
+       //    		  //   }
+       //    		  //    if(u_cty=="请选择"){
+       //    		  //   	alert("请选择城市");
+       //    		  //   	return false;
+       //    		  //   }
+       //    		  //    if(u_are=="请选择"){
+       //    		  //   	alert("请选择市区");
+       //    		  //   	return false;
+       //    		  //   }
+       //    		  //   if(u_adds==""){
+       //    		  //   	alert("请正确输入您的详细地址");
+       //    		  //   	return false;
+       //    		  //   }
+       //    		  //   if(nam.test(u_name)==false||u_name==""){
+       //    		  //   	alert("请正确输入您的姓名");
+       //    		  //   	return false;
+       //    		  //   }
+       //    		  //   if(tel.test(u_tel)==false||u_tel==""){
+       //    		  //   	alert("请正确输入您的联系方式");
+       //    		  //   	return false;
+       //    		  //   }
+          		    $.ajax({
+          		    	type:"POST",
+          		    	url:"http://test.bfecom.com/api/address.php",
+          		    	data:{
+          		    		"consignee":u_name,
+          		    		"mobilPhone":u_tel,
+          		    		"remarks":u_rek,
+          		    		"address":u_adds,
+          		    		"province":u_pro,
+          		    		"city":u_cty,
+          		    		"area":u_are
+          		    	},
+          		    	dataType:"jsonp",
+          		    	error:function(data){
+          		    		console.log(data)
+          		    	}
+
+          		    })
+
+      	return false;
+
+
+          })
+</script>
+</body>
+</html>

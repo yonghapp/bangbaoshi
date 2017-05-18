@@ -1,0 +1,125 @@
+@charset "utf-8";
+html{
+	font-size: 10rem;
+}
+body{
+	width: 100%;
+	height:100%;
+	position: fixed;
+	/*z-index: -1;*/
+	background: url(../images/bg.png) no-repeat center top;
+	background-size: 32rem 51.5rem;
+	 
+}
+.bg{
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	background: url(../images/bg1.png) no-repeat center top;
+	background-size: 32rem 51.5rem;
+}
+.pic{
+	width: 14.4rem;
+	height: 17.9rem;
+	margin: 9.5rem auto;
+	margin-bottom: .2rem;
+}
+.pic img{
+	width: 100%;
+	height: 100%;
+}
+.pic-txt{
+	text-align: center;
+	font-size: 1.7rem;
+	line-height: 3rem;
+	font-weight: 600;
+	color:#00a7ad;
+}
+.addr{
+	width: 80%;
+	height: 19.7rem;
+	padding-top:1.4rem;
+	margin: 0 auto;
+}
+.addr .add-txt{
+	text-align: center;
+	font-size: 1.3rem;
+	/*letter-spacing: 0.05rem;*/
+	font-weight: 600;
+	color:#ff5f01;
+	margin-bottom:1.2rem; 
+}
+.add-sele {
+	width: 100%;
+	height: 2.3rem;
+	text-align: center;	
+}
+.add-sele select{
+	width: 7.7rem;
+	height: 2.2rem;
+	margin-right:0.6rem;
+	padding-left:.5rem;
+	box-sizing:border-box;   
+	border-radius:.5rem; 
+	border:0.1rem solid #4dc3c7;
+	color:#d1d1d1; 
+	font-size: .9rem;
+	appearance:none;
+	-moz-appearance:none;/*去除chrome浏览器的默认下拉图片*/
+	-webkit-appearance:none;/*去除Firefox浏览器的默认下拉图片*/
+	background: url("../images/bar.jpg") no-repeat;
+	background-size:cover; 
+}
+.add-sele select:nth-child(3){	
+	margin-right:0; 
+}
+.addr .txt{
+	width: 96%;
+	height: 2.2rem;
+	margin: 0.4rem auto;
+	border-radius:.5rem; 
+	border:0.1rem solid #4dc3c7;
+	overflow: hidden;	
+}
+.addr .txt .adds{
+	width: 100%;
+	height: 100%;
+	display:block;
+	padding-left:.5rem;
+	border: none;
+	border-radius:.5rem;
+	box-sizing:border-box;
+	font-size: .9rem;
+	color:#d1d1d1;
+}
+.name{
+	width: 100%;
+	height: 2.3rem;
+	text-align: center;
+	overflow: hidden;
+}
+.name input{
+	width: 7.7rem;
+	height: 2.2rem;
+	margin-right:0.6rem;
+	padding-left:.5rem;
+	box-sizing:border-box;   
+	border-radius:.5rem; 
+	border:0.1rem solid #4dc3c7;
+	color:#626364;
+	font-size: .9rem;
+	color:#d1d1d1;
+}
+.name input:nth-child(3){
+	margin-right:0; 
+}
+.btn{
+	width: 13.1rem;
+	height: 3.8rem;
+	margin: 1.6rem auto;
+}
+.btn input{
+	width: 100%;
+	height: 100%;
+}
